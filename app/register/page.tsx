@@ -14,19 +14,18 @@ export interface RegParams {
     first_name: string;
     last_name: string;
     email: string;
-    password?: string;
     frequency: string;
 }
 
 export default function RegisterPage() {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
+    const [password, setPassword] = useState("")
     const [formData, setFormData] = useState<RegParams>({
         first_name: '',
         last_name: '',
         email: '',
-        password: '',
-        frequency: 'weekly',
+        frequency: 'weekly'
     })
     const {register} = useRegister()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -107,8 +106,8 @@ export default function RegisterPage() {
                                         <Input
                                             id="password"
                                             type="password"
-                                            value={formData.password}
-                                            onChange={handleChange}
+                                            value={password}
+                                            onChange={(event)=>setPassword(event.target.value)}
                                             required
                                             className="border-emerald-200 dark:border-emerald-800 focus-visible:ring-emerald-500"
                                         />

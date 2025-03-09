@@ -6,7 +6,7 @@ export default function useRegister() {
 
     const register = useCallback(async (regParams: RegParams) => {
         try {
-            const response = await http.post('/register/',regParams);
+            const response = await http.post('/register', regParams);
 
             return response.data;
         } catch (err) {

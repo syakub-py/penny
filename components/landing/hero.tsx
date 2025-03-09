@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import useSendEmail from "@/hooks/use-send-email";
 
-
 export default function Hero() {
     const { theme, resolvedTheme } = useTheme();
     const [dashboardImage, setDashboardImage] = useState(null);
@@ -19,7 +18,6 @@ export default function Hero() {
 
     useEffect(() => {
         const currentTheme = resolvedTheme || theme;
-
         if (currentTheme === "light") {
             import("../../public/LightDashboard.png").then((image) => {
                 setDashboardImage(image.default);
