@@ -98,7 +98,7 @@ export default function Hero() {
                         Penny analyzes your finances, sends personalized weekly summaries, and helps you save money with AI-powered insights. No spreadsheets required.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 w-full max-w-md mx-auto">
+                        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 w-full max-w-lg mx-auto">
                             <div className="relative flex-grow">
                                 <input
                                     type="email"

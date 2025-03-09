@@ -9,15 +9,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
     title: "Penny Assistant",
-    description: "A modern, responsive financial dashboard",
-    generator: 'v0.dev'
+    description: "An AI financial assistant and news letter powered by capital one",
 }
 
-export default function RootLayout({
-                                       children,
-                                   }: {
-    children: React.ReactNode
-}) {
+export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
