@@ -9,6 +9,9 @@ import { useRouter } from "next/navigation"
 import { FormEvent, useState } from "react"
 import Image from "next/image";
 import useRegister from "@/hooks/use-register";
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+import {auth} from "@/utils/firebaseConfig";
+
 
 export interface RegParams {
     first_name: string;
@@ -36,12 +39,17 @@ export default function RegisterPage() {
         }))
     }
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         setIsLoading(true)
-        register(formData)
+        try {
+            await createUserWithEmailAndPassword(auth, formData.email, password)
+            register(formData)
+            router.push("/dashboard")
+        }catch (error) {
+            alert(error)
+        }
         setIsLoading(false)
-        router.push("/dashboard")
     }
 
     return (

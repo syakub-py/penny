@@ -8,17 +8,26 @@ import { Coins } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { FormEvent, useState } from "react"
 import Image from "next/image";
+import {signInWithEmailAndPassword} from "@firebase/auth";
+import {auth} from "@/utils/firebaseConfig";
 
 export default function LoginPage() {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
-        setIsLoading(true)
-        setTimeout(() => {
+        try {
+            setIsLoading(true)
+            await signInWithEmailAndPassword(auth, email, password)
             router.push("/dashboard")
-        }, 200)
+            setIsLoading(false)
+        }catch (e){
+            alert(e)
+            setIsLoading(false)
+        }
     }
 
     return (
@@ -46,6 +55,7 @@ export default function LoginPage() {
                                             placeholder="m@example.com"
                                             required
                                             className="border-emerald-200 dark:border-emerald-800 focus-visible:ring-emerald-500"
+                                            onChange={e => setEmail(e.target.value)}
                                         />
                                     </div>
                                     <div className="grid gap-2">
@@ -60,6 +70,7 @@ export default function LoginPage() {
                                             type="password"
                                             required
                                             className="border-emerald-200 dark:border-emerald-800 focus-visible:ring-emerald-500"
+                                            onChange={e => setPassword(e.target.value)}
                                         />
                                     </div>
                                     <Button
