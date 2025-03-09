@@ -36,10 +36,10 @@ export default function RegisterPage() {
         }))
     }
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
         setIsLoading(true)
-        await register(formData)
+        register(formData)
         setIsLoading(false)
         router.push("/dashboard")
     }
