@@ -21,7 +21,7 @@ const notificationTypes = [
   { id: "user", label: "User Behavior", icon: Users },
 ]
 
-export default function SettingsTab() {
+export function SettingsTab() {
   const [notifications, setNotifications] = useState({
     account: true,
     security: true,
