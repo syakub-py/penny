@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { OverviewTab } from "@/components/analytics/overview-tab"
-import { NotificationsTab } from "@/components/analytics/notifications-tab"
+import { SettingsTab } from "@/components/analytics/settings-tab"
 
 export default function Dashboard() {
     return (
@@ -14,17 +14,17 @@ export default function Dashboard() {
                         Overview
                     </TabsTrigger>
                     <TabsTrigger
-                        value="notifications"
+                        value="settings"
                         className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white">
-                        Notifications
+                        Settings
                     </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="overview" className="space-y-4">
                     <OverviewTab />
                 </TabsContent>
-                <TabsContent value="notifications" className="space-y-4">
-                    <NotificationsTab />
+                <TabsContent value="settings" className="space-y-4">
+                    <SettingsTab />
                 </TabsContent>
             </Tabs>
         </div>
